@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind - Pro Edition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="top-header" class="header-container hidden">
+        <div class="color-picker" id="dynamic-picker"></div>
+        <div id="play-controls" class="hidden">
+            <button class="btn" onclick="submitGuess()">Submit Guess</button>
+            <button class="btn" style="background:#95a5a6" onclick="location.reload()">New Game</button>
+        </div>
+    </div>
+
+    <div id="setup" class="container">
+        <h1>Mastermind</h1>
+        <p>Select Game Mode:</p>
+        <button class="btn" onclick="initSetup('pvp')">VS Friend (Set Code)</button>
+        <button class="btn" onclick="initSetup('pvc')">VS Computer</button>
+        
+        <div id="config-area" class="hidden">
+            <hr style="border:0; border-top:1px solid #555; margin: 20px 0;">
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px;">
+                <p>Slots: 
+                    <select id="slot-count" onchange="refreshSetup()">
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </p>
+                <p>Colors: 
+                    <select id="color-count" onchange="refreshSetup()">
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </p>
+            </div>
+
+            <div id="pvp-setter" class="hidden">
+                <p><strong>Friend:</strong> Select a color above, then click the circles to set the code!</p>
+                <div class="slots" id="secret-inputs" style="margin-bottom: 20px; justify-content: center;"></div>
+            </div>
+            <button class="btn" onclick="startGame()">Start Game</button>
+        </div>
+    </div>
+
+    <div id="game" class="container hidden">
+        <h2 id="game-title">Decode the Combination</h2>
+        <div id="board" class="board"></div>
+        <div class="status-msg" id="status"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
